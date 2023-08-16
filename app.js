@@ -1,8 +1,8 @@
 require('colors');
 
 const main = async () => {
-    console.clear();
-    console.log('hola ficha'.red);
+
+    console.log('hola SENA CBA'.red);
 
 }
 
