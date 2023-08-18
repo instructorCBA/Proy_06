@@ -1,9 +1,6 @@
 const math = {};
 
 const invertirNumero = numero => {
-    // Nota: como alternativa podría usarse la función que invierte una cadena, convirtiendo el número
-    // a cadena, invocando a la función y convirtiendo la cadena a número
-    // https://parzibyte.me/blog/2018/11/18/invertir-cadena-palabra-javascript/
     let invertido = 0;
     while (numero != 0) {
         invertido = 10 * invertido + numero % 10
@@ -11,13 +8,53 @@ const invertirNumero = numero => {
     }
     return invertido
 };
-const invertirNumeroComoCadena = numero => {
-    const numeroInvertidoComoCadena = numero.toString().split("").reverse().join("");
-    // Si quieres puedes hacer un parseFloat() para regresarlo como número y no como cadena
-    return numeroInvertidoComoCadena;
+
+const invertirNumeroComoTexto = numero => {
+    const numeroInvertidoComoTexto = numero.toString().split("").reverse().join("");
+    return numeroInvertidoComoTexto;
 };
 
+const invertirTexto = texto => {
+    const splitText = texto.split('');
+    const reversedText = splitText.reverse();
+    const joinedText = reversedText.join('');
+    return joinedText;
+};
+
+const invertirArreglo = arreglo => {
+    const reverseObject = arreglo.reverse();
+    return reverseObject;
+};
+
+const conversionDatos = data => {
+    let dataType = typeof data;
+    let dataVar;
+
+    if (data === '' || data === null || data === undefined || data.length === 0) {
+        dataVar = 'El valor ingresado está vacio o incorrecto';
+    }else {
+        console.log(`El valor ingresado es de tipo: ${dataType}, con un valor de: ${data}`);
+        switch (dataType) {
+            case 'number':
+                dataVar = invertirNumero(data);          
+                break;
+            case 'string':
+                dataVar = invertirTexto(data);
+                break;           
+            case 'object':
+                dataVar = invertirArreglo(data);
+                break;
+            default:
+                dataVar = 'El Valor ingresado no se puede invertir';
+        }
+    }      
+    return dataVar;
+}
+
 math.invertirNumero = invertirNumero;
-math.invertirNumeroComoCadena = invertirNumeroComoCadena;
+math.invertirNumeroComoCadena = invertirNumeroComoTexto;
+math.invertirTexto = invertirTexto;
+math.invertirArreglo = invertirArreglo;
+math.conversionDatos = conversionDatos;
 
 module.exports = math;
